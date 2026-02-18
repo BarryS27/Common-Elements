@@ -1,0 +1,93 @@
+@import 'tokens';
+@import 'mixins';
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 2em;
+    font-size: 13px;
+    font-weight: 600;
+    user-select: none;
+
+    @each $name, $hex in $ios-colors {
+        @if $name == 'blue' or $name == 'green' or $name == 'orange' or $name == 'purple' or $name == 'gray' {
+            &.theme-#{$name} {
+                background-color: color-mix(in srgb, $hex, #fff 92%); 
+                color: $hex;
+                border: 1px solid color-mix(in srgb, $hex, transparent 88%);
+            }
+        }
+    }
+    i { width: 14px; height: 14px; }
+}
+
+.card {
+    display: block; 
+    @include std-thin;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    
+    &:focus-visible { border-radius: 24px; }
+
+    > img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    > div {
+        padding: 24px;
+        p { 
+            margin: 0 0 16px 0; 
+            font-size: 15px; 
+            color: map-get($ios-colors, 'text-tert'); 
+            line-height: 1.5;
+        }
+    }
+
+    &.project > div > div:first-child {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        margin-bottom: 8px;
+
+        h3 { 
+            margin: 0; 
+            font-size: 20px; 
+            color: map-get($ios-colors, 'text-primary');
+            transition: color 0.2s ease;
+        }
+      
+        i { 
+            color: map-get($ios-colors, 'text-tert'); 
+            width: 20px; height: 20px; 
+            transition: color 0.2s ease;
+        }
+    }
+
+    @media (hover: hover) {
+        &.project:hover > div > div:first-child {
+            h3, i { color: map-get($ios-colors, 'blue'); }
+        }
+    }
+}
+
+a.card {
+    @include tap-effect;
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    }
+}
+
+footer {
+    padding: 48px; text-align: center; color: map-get($ios-colors, 'text-tert'); font-size: 13px;
+    background: map-get($ios-colors, 'bg');
+    border-top: 1px solid rgba(0,0,0,0.05);
+    i { width: 12px; height: 12px; color: #FF3B30; vertical-align: -2px; }
+}
