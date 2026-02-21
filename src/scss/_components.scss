@@ -1,0 +1,86 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    display: block; 
+    @include std-thin;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    
+    &.is-interactive {
+        @include tap-effect;
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+        }
+    }
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 2em;
+    font-size: 13px;
+    font-weight: 600;
+    user-select: none;
+
+    @each $name, $hex in $light-palette {
+        &.is-#{$name} {
+            background-color: color-mix(in srgb, $hex, #fff 92%); 
+            color: $hex;
+            border: 1px solid color-mix(in srgb, $hex, transparent 88%);
+        }
+    }
+    i { width: 14px; height: 14px; }
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px; 
+    margin: 0;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+
+    font-size: 17px; 
+
+    &:last-child { border-bottom: none; }
+}
+
+.fade-in {
+    opacity: 0; 
+    transform: translateY(30px) scale(0.98);
+    will-change: transform, opacity;
+
+    animation: slide-up 1.2s $ease-spring forwards;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+}
+
+.stagger {
+    & > * {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+        animation: slide-up 1.2s $ease-spring forwards;
+        animation-timeline: view();
+        animation-range: entry 5% cover 25%;
+    }
+    
+    @for $j from 1 through 6 {
+        & > *:nth-child(#{$j}) {
+            animation-delay: #{$j * 0.1}s;
+        }
+    }
+}

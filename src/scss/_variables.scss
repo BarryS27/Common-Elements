@@ -1,0 +1,21 @@
+$light-palette: (
+    'blue':        #007AFF,
+    'green':       #34C759,
+    'orange':      #FF9500,
+    'purple':      #AF52DE,
+    'gray':        #8E8E93,
+    'text-primary':#1C1C1E,
+    'text-sec':    #48484A,
+    'text-tert':   #6D6D72,
+    'bg':          #E5E5EA,
+    'card':        #FFFFFF
+);
+
+$ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
+
+:root {
+    color-scheme: light;
+    @each $name, $color in $light-palette {
+        --#{$name}: #{$color};
+    }
+}

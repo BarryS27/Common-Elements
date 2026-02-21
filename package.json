@@ -1,0 +1,34 @@
+{
+  "name": "@barrys27/ui",
+  "version": "1.0.0",
+  "description": "A minimalist, 8-point grid UI architecture inspired by iOS HIG.",
+  "main": "static/css/main.css",
+  "style": "static/css/main.css",
+  "files": [
+    "src/scss",
+    "static/css"
+  ],
+  "scripts": {
+    "build": "sass --style=compressed src/scss:static/css",
+    "watch": "sass --watch src/scss:static/css",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "ui-kit",
+    "design-system",
+    "minimalist",
+    "ios-inspired",
+    "8-point-grid"
+  ],
+  "author": "Bairu Song",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BarryS27/barrys-ui.git"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
+  }
+}

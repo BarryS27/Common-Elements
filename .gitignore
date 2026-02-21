@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+
+# Lock files
+package-lock.json
+
+# Build artifacts
+static/css/*.map
