@@ -13,6 +13,21 @@ $light-palette: (
     'glass-border':rgba(255, 255, 255, 0.5)
 );
 
+$dark-palette: (
+    'blue':         #0A84FF,
+    'green':        #30D158,
+    'orange':       #FF9F0A,
+    'purple':       #BF5AF2,
+    'gray':         #8E8E93,
+    'text-primary': #FFFFFF,
+    'text-sec':     #8E8E93,
+    'text-tert':    #48484A,
+    'bg':           #000000,
+    'card':         #1C1C1E,
+    'glass-bg':     rgba(28, 28, 30, 0.7),
+    'glass-border': rgba(255, 255, 255, 0.1)
+);
+
 $ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
 
 :root {
@@ -22,4 +37,14 @@ $ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
     }
     --gap: clamp(16px, 2vw + 8px, 24px);
     --ease-spring: #{$ease-spring};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        
+        @each $name, $color in $dark-palette {
+            --#{$name}: #{$color};
+        }
+    }
 }
