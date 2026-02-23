@@ -8,7 +8,9 @@ $light-palette: (
     'text-sec':    #48484A,
     'text-tert':   #6D6D72,
     'bg':          #E5E5EA,
-    'card':        #FFFFFF
+    'card':        #FFFFFF,
+    'glass-bg':    rgba(255, 255, 255, 0.7),
+    'glass-border':rgba(255, 255, 255, 0.5)
 );
 
 $ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
