@@ -17,7 +17,9 @@
   },
   "files": [
     "src/scss",
-    "static/css"
+    "static/css",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "build": "sass --style=compressed src/scss:static/css",
