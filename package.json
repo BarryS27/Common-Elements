@@ -4,6 +4,17 @@
   "description": "A minimalist, 8-point grid UI architecture inspired by iOS HIG.",
   "main": "static/css/main.css",
   "style": "static/css/main.css",
+  "sass": "src/scss/main.scss",
+  "exports": {
+    ".": {
+      "sass": "./src/scss/main.scss",
+      "import": "./static/css/main.css",
+      "require": "./static/css/main.css",
+      "default": "./static/css/main.css"
+    },
+    "./css": "./static/css/main.css",
+    "./scss/*": "./src/scss/*.scss"
+  },
   "files": [
     "src/scss",
     "static/css"
