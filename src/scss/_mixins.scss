@@ -12,10 +12,10 @@
 }
 
 @mixin std-thin {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--glass-border);
 }
 
 @mixin tap-effect {
