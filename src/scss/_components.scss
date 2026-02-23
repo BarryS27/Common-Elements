@@ -3,8 +3,8 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--gap);
 }
 
 .card {
@@ -13,7 +13,6 @@
     border-radius: 24px;
     overflow: hidden;
     position: relative;
-    border: none;
     
     &.is-interactive {
         @include tap-effect;
@@ -36,9 +35,9 @@
 
     @each $name, $hex in $light-palette {
         &.is-#{$name} {
-            background-color: color-mix(in srgb, $hex, #fff 92%); 
-            color: $hex;
-            border: 1px solid color-mix(in srgb, $hex, transparent 88%);
+            background-color: color-mix(in srgb, var(--#{$name}), transparent 92%); 
+            color: var(--#{$name});
+            border: 1px solid color-mix(in srgb, var(--#{$name}), transparent 85%);
         }
     }
     i { width: 14px; height: 14px; }
@@ -64,23 +63,7 @@
     transform: translateY(30px) scale(0.98);
     will-change: transform, opacity;
 
-    animation: slide-up 1.2s $ease-spring forwards;
+    animation: slide-up 1.2s var(--ease-spring) forwards;
     animation-timeline: view();
-    animation-range: entry 5% cover 25%;
-}
-
-.stagger {
-    & > * {
-        opacity: 0;
-        transform: translateY(30px) scale(0.98);
-        animation: slide-up 1.2s $ease-spring forwards;
-        animation-timeline: view();
-        animation-range: entry 5% cover 25%;
-    }
-    
-    @for $j from 1 through 6 {
-        & > *:nth-child(#{$j}) {
-            animation-delay: #{$j * 0.1}s;
-        }
-    }
+    animation-range: entry 5% cover 30%;
 }
